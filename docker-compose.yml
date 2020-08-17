@@ -1,0 +1,9 @@
+version: "3"
+services:
+  go-app:
+    build: ./app
+    tty: true
+    volumes:
+      - ./project:/go/src/project_server
+    ports:
+      - "8080:8080"
