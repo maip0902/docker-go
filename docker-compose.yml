@@ -1,9 +1,23 @@
 version: "3"
 services:
   go-app:
+    container_name: go-app
     build: ./app
     tty: true
     volumes:
       - ./project:/go/src/project_server
     ports:
-      - "8080:8080"
+      - "8000:8000"
+    environment:
+      MONGO_DB_HOST: mongo-db
+      MONGO_DB_PORT: 27017
+    links:
+      - "mongo-db:mongo-db"
+  mongo-db:
+    container_name: mongo_db
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGODB_USER: root
+      MONGODB_PASSWORD: root
