@@ -5,6 +5,7 @@ RUN apt-get update && \
 RUN mkdir /go/src/project_server
 WORKDIR /go/src/project_server
 RUN go mod init
+RUN go get gopkg.in/mgo.v2
 RUN go get github.com/99designs/gqlgen
 RUN go run github.com/99designs/gqlgen init
 ADD ./app /go/src/project_server
